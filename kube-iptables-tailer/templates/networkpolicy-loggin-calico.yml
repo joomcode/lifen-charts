@@ -15,19 +15,27 @@ spec:
   ingress:
   - action: Log
     protocol: TCP
+{{ if .Values.calico.defaultAllow }}
   - action: Allow
     protocol: TCP
+{{ end }}
   - action: Log
     protocol: UDP
+{{ if .Values.calico.defaultAllow }}
   - action: Allow
     protocol: UDP
+{{ end }}
   egress:
   - action: Log
     protocol: TCP
+{{ if .Values.calico.defaultAllow }}
   - action: Allow
     protocol: TCP
+{{ end }}
   - action: Log
     protocol: UDP
+{{ if .Values.calico.defaultAllow }}
   - action: Allow
     protocol: UDP
+{{ end }}
 {{- end -}}
